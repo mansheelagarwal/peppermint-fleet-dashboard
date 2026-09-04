@@ -2,6 +2,8 @@
 
 An operator-focused fleet dashboard for replaying fifteen minutes of recorded telemetry and switching to a continuously generated live feed. Both sources pass through the same normalized fleet-state model, so the map, roster, metrics, trend, filters, and robot inspector stay consistent.
 
+**Live demo:** https://peppermint-fleet-operations.mansheelagarwal11.chatgpt.site
+
 ## Run locally
 
 Requirements: Node.js 22.13 or newer.
