@@ -44,12 +44,12 @@ function TrendChart({ data, currentTime, live }: { data: TrendPoint[]; currentTi
 function MapMarker({ robot, selected, dimmed, onSelect }: { robot: RobotState; selected: boolean; dimmed: boolean; onSelect: () => void }) {
   return (
     <button
-      className={`robot-marker ${selected ? "selected" : ""} ${dimmed ? "dimmed" : ""}`}
+      className={`robot-marker type-${robot.robot_type} ${selected ? "selected" : ""} ${dimmed ? "dimmed" : ""}`}
       style={{ left: `${robot.x / 9}%`, top: `${robot.y / 5.6}%`, "--status": STATUS_COLORS[robot.status] } as React.CSSProperties}
       onClick={onSelect}
       aria-label={`${robot.robot_id}, ${statusLabel(robot.status)}, ${Math.round(robot.battery)} percent battery`}
     >
-      <span className="robot-dot">{robot.robot_id.slice(1)}</span>
+      <span className="robot-dot"><b>{robot.robot_id.slice(1)}</b></span>
       <span className="robot-label">{robot.robot_id}</span>
     </button>
   );
