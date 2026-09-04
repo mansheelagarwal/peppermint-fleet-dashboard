@@ -16,10 +16,10 @@
 
 * { box-sizing: border-box; }
 html { background: var(--background); }
-body { margin: 0; background: radial-gradient(circle at 70% -20%, #152331 0, transparent 35%), var(--background); color: var(--ink); font-family: var(--font-geist-sans), Arial, sans-serif; }
+body { margin: 0; background: radial-gradient(circle at 70% -20%, #152331 0, transparent 35%), var(--background); color: var(--ink); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 button, input, select { font: inherit; }
 button { color: inherit; }
-.mono { font-family: var(--font-geist-mono), monospace; }
+.mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
 .muted { color: var(--muted); }
 
 .app-shell { width: min(1500px, 100%); min-height: 100vh; margin: 0 auto; padding: 0 30px 44px; }
@@ -81,9 +81,9 @@ button { color: inherit; }
 .robot-marker.selected .robot-dot::after { content: ""; position: absolute; inset: -8px; border: 1px solid var(--status); border-radius: 50%; animation: markerPulse 1.8s infinite; }
 .robot-label { position: absolute; left: 50%; top: 31px; transform: translateX(-50%); padding: 2px 5px; color: white; background: rgba(7, 13, 18, .86); border-radius: 3px; font-size: 8px; text-transform: uppercase; }
 @keyframes markerPulse { 50% { transform: scale(1.2); opacity: .4; } }
-.map-scale { position: absolute; left: 12px; bottom: 10px; padding: 4px 7px; border-radius: 4px; background: rgba(7, 12, 17, .74); color: #d7dee5; font: 9px var(--font-geist-mono); z-index: 3; }
+.map-scale { position: absolute; left: 12px; bottom: 10px; padding: 4px 7px; border-radius: 4px; background: rgba(7, 12, 17, .74); color: #d7dee5; font: 9px "SFMono-Regular", Consolas, monospace; z-index: 3; }
 
-.count-badge { border: 1px solid #324352; padding: 4px 7px; border-radius: 4px; font: 10px var(--font-geist-mono); color: var(--muted); }
+.count-badge { border: 1px solid #324352; padding: 4px 7px; border-radius: 4px; font: 10px "SFMono-Regular", Consolas, monospace; color: var(--muted); }
 .search { height: 39px; margin: 12px 14px 8px; display: flex; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid var(--line); background: #0a1118; border-radius: 6px; color: var(--muted); }
 .search input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 11px; }
 .filter-row { display: flex; gap: 5px; padding: 0 14px 10px; border-bottom: 1px solid var(--line); }
@@ -106,7 +106,7 @@ button { color: inherit; }
 .chart-wrap { padding: 15px 20px 13px; }
 .chart-wrap svg { width: 100%; height: 145px; overflow: visible; }
 .chart-grid { stroke: #273440; stroke-width: 1; stroke-dasharray: 3 5; }
-.chart-wrap text { fill: #677585; font: 8px var(--font-geist-mono); }
+.chart-wrap text { fill: #677585; font: 8px "SFMono-Regular", Consolas, monospace; }
 .chart-line { fill: none; stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
 .chart-line.working { stroke: var(--accent); }
 .chart-line.attention { stroke: var(--warning); }
@@ -121,7 +121,7 @@ button { color: inherit; }
 .detail-grid div { padding: 10px; background: #0c131a; border: 1px solid #202b36; border-radius: 6px; }
 .detail-grid span, .detail-grid strong { display: block; }
 .detail-grid span { color: var(--muted); font-size: 8px; text-transform: uppercase; letter-spacing: .08em; }
-.detail-grid strong { margin-top: 6px; font: 11px var(--font-geist-mono); }
+.detail-grid strong { margin-top: 6px; font: 11px "SFMono-Regular", Consolas, monospace; }
 .recommendation { display: flex; gap: 10px; align-items: center; padding: 10px 12px; background: rgba(37, 208, 186, .08); border-left: 2px solid var(--accent); }
 .recommendation.alert { background: rgba(246, 185, 75, .08); border-color: var(--warning); }
 .recommendation > span { color: var(--accent); }

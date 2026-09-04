@@ -20,6 +20,14 @@ npm test
 npm run build
 ```
 
+## Deploy to Vercel
+
+```bash
+npx vercel@latest --prod
+```
+
+Follow the account authorization prompt, accept the detected defaults, and replace the live-demo URL above with the returned `vercel.app` address.
+
 ## What is included
 
 - Site map with all eight robots and smooth position updates
