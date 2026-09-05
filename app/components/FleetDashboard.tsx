@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import {
-  buildTrend, createLiveEvents, eventsBySecond, fleetAtTime, fleetMetrics, formatTime,
+  buildTrend, createLiveEvents, fleetAtTime, fleetMetrics, formatTime,
   ingestEvents, needsAttention, parseEventLog, statusLabel,
   type FleetState, type Robot, type RobotEvent, type RobotState, type TrendPoint,
 } from "../lib/fleet";
@@ -67,6 +68,7 @@ export function FleetDashboard() {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
   const [error, setError] = useState("");
+  const [liveSeconds, setLiveSeconds] = useState(0);
   const liveTick = useRef(0);
 
   useEffect(() => {
@@ -87,7 +89,6 @@ export function FleetDashboard() {
     }).catch((reason: Error) => setError(reason.message));
   }, []);
 
-  const timeline = useMemo(() => eventsBySecond(events), [events]);
   const replayTrend = useMemo(() => buildTrend(robots, events), [robots, events]);
   const [liveTrend, setLiveTrend] = useState<TrendPoint[]>([]);
 
@@ -103,6 +104,7 @@ export function FleetDashboard() {
         });
       } else {
         liveTick.current += 1;
+        setLiveSeconds(liveTick.current * 2);
         setFleet((current) => {
           const next = ingestEvents(current, createLiveEvents(current, liveTick.current));
           if (liveTick.current % 3 === 0) {
@@ -118,7 +120,7 @@ export function FleetDashboard() {
       }
     }, mode === "replay" ? 1000 : 650);
     return () => window.clearInterval(interval);
-  }, [playing, mode, speed, events, robots, timeline]);
+  }, [playing, mode, speed, events, robots]);
 
   const switchMode = (nextMode: Mode) => {
     setPlaying(false);
@@ -130,6 +132,7 @@ export function FleetDashboard() {
       setFleet(fleetAtTime(robots, events, 900));
       setLiveTrend([]);
       liveTick.current = 0;
+      setLiveSeconds(0);
     }
   };
 
@@ -171,7 +174,7 @@ export function FleetDashboard() {
             <select aria-label="Replay speed" value={speed} onChange={(event) => setSpeed(Number(event.target.value))}>
               {[1, 4, 8, 16, 32].map((value) => <option key={value} value={value}>{value}×</option>)}
             </select>
-          </> : <><span className="live-label">Generating updates every 650 ms</span><span className="mono muted">T+{liveTick.current * 2}s</span></>}
+          </> : <><span className="live-label">Generating updates every 650 ms</span><span className="mono muted">T+{liveSeconds}s</span></>}
         </div>
       </section>
 
@@ -186,7 +189,7 @@ export function FleetDashboard() {
         <article className="panel map-panel">
           <div className="panel-heading"><div><p className="eyebrow">Site overview</p><h1>Live floor map</h1></div><div className="map-key"><span><i className="key-working" />Working</span><span><i className="key-idle" />Idle</span><span><i className="key-alert" />Attention</span></div></div>
           <div className="site-map">
-            <img src="/data/layout.png" alt="Pune Site 01 floor layout" />
+            <Image src="/data/layout.png" alt="Pune Site 01 floor layout" width={900} height={560} priority />
             {fleetList.map((robot) => <MapMarker key={robot.robot_id} robot={robot} selected={selectedId === robot.robot_id} dimmed={!filtered.some((item) => item.robot_id === robot.robot_id)} onSelect={() => setSelectedId(robot.robot_id)} />)}
             <div className="map-scale">900 × 560 units</div>
           </div>

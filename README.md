@@ -6,7 +6,7 @@ An operator-focused fleet dashboard for replaying fifteen minutes of recorded te
 
 ## Run locally
 
-Requirements: Node.js 22.13 or newer.
+Requirements: Node.js 22.13.x or Node.js 24 and newer. Node.js 23 is not supported by the test tooling.
 
 ```bash
 npm install
@@ -59,7 +59,7 @@ Statuses `active` and `on_mission` count as working. `blocked`, `error`, `mainte
 
 ## AI delegation notes
 
-AI assisted with the initial implementation, styling, test scaffolding, and documentation. The product decisions—choosing a frontend-only live simulator, the normalized state shape, attention definitions, and the deliberately compact architecture—were reviewed as part of the submission. All behavior is concentrated in the files listed above so it can be explained and changed during a walkthrough.
+AI assisted with the initial implementation, styling, test scaffolding, debugging, and documentation. The final submission was then reviewed and simplified to keep its architecture deliberate and explainable. The main product decisions are the frontend-only live simulator, normalized fleet state, explicit attention rules, and a compact source-adapter boundary. All behavior is concentrated in the files listed above so it can be explained and changed during a walkthrough.
 
 ## What I would do next
 

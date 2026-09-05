@@ -36,16 +36,6 @@ export function parseEventLog(source: string): RobotEvent[] {
   });
 }
 
-export function eventsBySecond(events: RobotEvent[]): Map<number, RobotEvent[]> {
-  const timeline = new Map<number, RobotEvent[]>();
-  for (const event of events) {
-    const existing = timeline.get(event.t) ?? [];
-    existing.push(event);
-    timeline.set(event.t, existing);
-  }
-  return timeline;
-}
-
 export function fleetAtTime(robots: Robot[], events: RobotEvent[], time: number): FleetState {
   const fleet: FleetState = Object.fromEntries(robots.map((robot) => [robot.robot_id, {
     t: 0,
