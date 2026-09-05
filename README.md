@@ -59,7 +59,7 @@ Statuses `active` and `on_mission` count as working. `blocked`, `error`, `mainte
 
 ## AI delegation notes
 
-AI assisted with the initial implementation, styling, test scaffolding, debugging, and documentation. The final submission was then reviewed and simplified to keep its architecture deliberate and explainable. The main product decisions are the frontend-only live simulator, normalized fleet state, explicit attention rules, and a compact source-adapter boundary. All behavior is concentrated in the files listed above so it can be explained and changed during a walkthrough.
+AI assisted with coding where required, streamlining the project workflow, and explaining complex topics throughout development.
 
 ## What I would do next
 
